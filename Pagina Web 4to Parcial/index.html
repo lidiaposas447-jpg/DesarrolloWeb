@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área de Informática - BTPI</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            navy: '#1e3a8a',
+                            blue: '#38bdf8',
+                            green: '#059669',
+                            lightgreen: '#34d399',
+                            yellow: '#f59e0b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #00a896;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --accent: #0284c7;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            line-height: 1.6;
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* HEADER & BANNER */
+        header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .header-logo {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-title {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .header-title h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #38bdf8;
+        }
+
+        .header-title p {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+        }
+
+        /* NAVEGACIÓN */
+        nav {
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-container a {
+            color: #e2e8f0;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            display: block;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container a:hover {
+            color: #38bdf8;
+            background-color: rgba(30, 58, 138, 0.4);
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #38bdf8;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #00a896;
+            border-radius: 2px;
+        }
+
+        /* SECCIÓN SOBRE LA CARRERA BTPI */
+        .btpi-info {
+            padding: 2rem;
+            border-radius: 16px;
+            margin-bottom: 3rem;
+        }
+
+        .btpi-intro {
+            font-size: 1.05rem;
+            text-align: justify;
+            margin-bottom: 2rem;
+            color: #cbd5e1;
+            line-height: 1.8;
+        }
+
+        .btpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .info-card {
+            background: rgba(15, 23, 42, 0.6);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-top: 4px solid #0284c7;
+            border-left: 1px solid rgba(255,255,255,0.05);
+            border-right: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .info-card h3 {
+            color: #38bdf8;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.15rem;
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-card li {
+            position: relative;
+            padding-left: 1.4rem;
+            margin-bottom: 0.6rem;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        .info-card li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #34d399;
+            font-weight: bold;
+        }
+
+        /* TARJETAS PERSONAL Y DOCENTES */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        }
+
+        .card-img-container {
+            width: 100%;
+            height: 250px;
+            background-color: #1e293b;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .card-body h3 {
+            color: #f8fafc;
+            margin-bottom: 0.25rem;
+            font-size: 1.2rem;
+        }
+
+        .card-body p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: rgba(2, 132, 199, 0.2);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 0.25rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* FORMULARIO Y TERMINAL SQL */
+        .sql-section {
+            padding: 2rem;
+            border-radius: 16px;
+            margin-bottom: 3rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #cbd5e1;
+        }
+
+        .form-group input, .form-group select {
+            padding: 0.75rem;
+            background-color: #1e293b;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: white;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: #38bdf8;
+        }
+
+        .btn-submit {
+            background-color: #059669;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            height: fit-content;
+            align-self: flex-end;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .btn-submit:hover {
+            background-color: #10b981;
+        }
+
+        .sql-terminal {
+            background-color: #020617;
+            color: #38bdf8;
+            padding: 1.2rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.05);
+            overflow-x: auto;
+            line-height: 1.6;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            padding: 0.85rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        th {
+            background-color: rgba(30, 41, 59, 0.8);
+            color: #f8fafc;
+            font-weight: 600;
+        }
+
+        .btn-delete {
+            background-color: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-delete:hover {
+            background-color: rgba(239, 68, 68, 0.4);
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #020617;
+            color: #94a3b8;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <img src="logo-btpi.png" alt="Logo BTPI" class="header-logo">
+            <div class="header-title">
+                <h1>Área de Informática</h1>
+                <p>Bachillerato Técnico Profesional en Informática (BTPI)</p>
+            </div>
+            <img src="sello.jpg" alt="Sello Institucional" class="header-logo">
+        </div>
+    </header>
+
+    <!-- NAVEGACIÓN -->
+    <nav>
+        <ul class="nav-container">
+            <li><a href="#carrera"><i class="fa-solid fa-laptop mr-2"></i> La Carrera</a></li>
+            <li><a href="#docentes"><i class="fa-solid fa-chalkboard-user mr-2"></i> Docentes</a></li>
+            <li><a href="#alumnos"><i class="fa-solid fa-user-graduate mr-2"></i> Alumnos</a></li>
+            <li><a href="#clases"><i class="fa-solid fa-book-open mr-2"></i> Clases</a></li>
+            <li><a href="#registro"><i class="fa-solid fa-database mr-2"></i> Registro SQL</a></li>
+        </ul>
+    </nav>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div class="container space-y-12">
+
+        <!-- SOBRE LA CARRERA BTPI -->
+        <section id="carrera" class="glass-card btpi-info">
+            <h2 class="section-title">Bachillerato Técnico Profesional en Informática (BTPI)</h2>
+            <p class="btpi-intro">
+                El <strong>Bachillerato Técnico Profesional en Informática (BTPI)</strong> es una oferta educativa de educación media diseñada para formar jóvenes con competencias técnicas, analíticas y tecnológicas de alto nivel. La carrera prepara a los estudiantes para responder a las exigencias de un mercado global cada vez más digitalizado, combinando una sólida formación teórica con una intensa práctica orientada a la resolución de problemas reales.
+            </p>
+
+            <div class="btpi-grid">
+                <div class="info-card">
+                    <h3><i class="fa-solid fa-bullseye"></i> Objetivo General</h3>
+                    <p style="font-size: 0.85rem; color: #94a3b8;">
+                        Formar profesionales de nivel medio capacitados en el diseño, desarrollo, implementación y mantenimiento de soluciones informáticas, capacitándolos tanto para insertarse en el mercado laboral como para continuar sus estudios universitarios.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h3><i class="fa-solid fa-shield-halved"></i> Fortalezas</h3>
+                    <ul>
+                        <li>Formación práctica y técnica</li>
+                        <li>Pensamiento lógico estructurado</li>
+                        <li>Adaptabilidad tecnológica</li>
+                        <li>Proyectos de desarrollo real</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3><i class="fa-solid fa-briefcase"></i> Salida Laboral</h3>
+                    <ul>
+                        <li>Técnico en Soporte y Mantenimiento</li>
+                        <li>Desarrollador Web Jr.</li>
+                        <li>Administrador Auxiliar de Redes</li>
+                        <li>Asistente Operativo de Sistemas</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3><i class="fa-solid fa-graduation-cap"></i> Área Universitaria</h3>
+                    <ul>
+                        <li>Ingeniería en Sistemas / Computación</li>
+                        <li>Ingeniería en Telecomunicaciones</li>
+                        <li>Licenciatura en Informática Administrativa</li>
+                        <li>Ciberseguridad y Auditoría</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- DOCENTES -->
+        <section id="docentes">
+            <h2 class="section-title">Docentes de la Especialidad</h2>
+            <div class="grid-cards">
+                <div class="glass-card card">
+                    <div class="card-img-container">
+                        <img src="eleuterio.jpg" alt="Eleuterio Morán" class="card-img">
+                    </div>
+                    <div class="card-body">
+                        <h3>Eleuterio Morán</h3>
+                        <p>Docente de la Especialidad</p>
+                        <span class="badge">Desarrollo Web</span>
+                    </div>
+                </div>
+                <div class="glass-card card">
+                    <div class="card-img-container">
+                        <img src="celis.jpg" alt="Celis Bonilla" class="card-img">
+                    </div>
+                    <div class="card-body">
+                        <h3>Celis Bonilla</h3>
+                        <p>Docente de la Especialidad</p>
+                        <span class="badge">Redes Informáticas</span>
+                    </div>
+                </div>
+                <div class="glass-card card">
+                    <div class="card-img-container">
+                        <img src="ayslin.jpg" alt="Ayslin Calix" class="card-img">
+                    </div>
+                    <div class="card-body">
+                        <h3>Ayslin Calix</h3>
+                        <p>Docente de la Especialidad</p>
+                        <span class="badge">Programación II y Mantenimiento</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ALUMNOS -->
+        <section id="alumnos">
+            <h2 class="section-title">Estudiantes de BTPI</h2>
+            <div class="grid-cards max-w-2xl mx-auto">
+                <div class="glass-card card">
+                    <div class="card-img-container">
+                        <img src="joseph.jpg" alt="Joseph Palencia" class="card-img">
+                    </div>
+                    <div class="card-body">
+                        <h3>Joseph Palencia</h3>
+                        <p>Estudiante de Informática</p>
+                        <span class="badge">4to Parcial - BTPI</span>
+                    </div>
+                </div>
+                <div class="glass-card card">
+                    <div class="card-img-container">
+                        <img src="rodin.jpg" alt="Rodin Jair Padilla" class="card-img">
+                    </div>
+                    <div class="card-body">
+                        <h3>Rodin Jair Padilla</h3>
+                        <p>Estudiante de Informática</p>
+                        <span class="badge">4to Parcial - BTPI</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CLASES IMPARTIDAS POR AÑO (TU BLOQUE EXACTO INTEGRADO) -->
+        <section id="clases" class="space-y-6">
+            <h2 class="section-title">Contenidos de las Clases</h2>
+
+            <!-- Botones Interactivos para Alternar entre Años -->
+            <div class="flex justify-center gap-3 mb-6">
+                <button onclick="switchYear('1er-ano')" id="btn-1er-ano" class="year-btn active bg-brand-green/20 text-brand-lightgreen border border-brand-lightgreen/50 font-semibold px-4 py-2 rounded-lg text-sm transition-all">1er Año</button>
+                <button onclick="switchYear('2do-ano')" id="btn-2do-ano" class="year-btn bg-slate-800 text-slate-400 border border-slate-700 font-semibold px-4 py-2 rounded-lg text-sm transition-all">2do Año</button>
+                <button onclick="switchYear('3er-ano')" id="btn-3er-ano" class="year-btn bg-slate-800 text-slate-400 border border-slate-700 font-semibold px-4 py-2 rounded-lg text-sm transition-all">3er Año</button>
+            </div>
+
+            <!-- Contenidos de las Clases -->
+            <!-- 1er Año -->
+            <div id="1er-ano" class="year-content grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 hover:border-brand-lightgreen/40 transition-all">
+                    <span class="w-8 h-8 rounded-lg bg-brand-green/20 text-brand-lightgreen font-bold text-sm flex items-center justify-center shrink-0">1</span>
+                    <span class="font-semibold text-slate-200 text-sm">Español</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 hover:border-brand-lightgreen/40 transition-all">
+                    <span class="w-8 h-8 rounded-lg bg-brand-green/20 text-brand-lightgreen font-bold text-sm flex items-center justify-center shrink-0">2</span>
+                    <span class="font-semibold text-slate-200 text-sm">Matemáticas</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 hover:border-brand-lightgreen/40 transition-all">
+                    <span class="w-8 h-8 rounded-lg bg-brand-green/20 text-brand-lightgreen font-bold text-sm flex items-center justify-center shrink-0">3</span>
+                    <span class="font-semibold text-slate-200 text-sm">Sociología</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 hover:border-brand-lightgreen/40 transition-all">
+                    <span class="w-8 h-8 rounded-lg bg-brand-green/20 text-brand-lightgreen font-bold text-sm flex items-center justify-center shrink-0">4</span>
+                    <span class="font-semibold text-slate-200 text-sm">Historia de Honduras</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 hover:border-brand-lightgreen/40 transition-all">
+                    <span class="w-8 h-8 rounded-lg bg-brand-green/20 text-brand-lightgreen font-bold text-sm flex items-center justify-center shrink-0">5</span>
+                    <span class="font-semibold text-slate-200 text-sm">Inglés</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 hover:border-brand-lightgreen/40 transition-all">
+                    <span class="w-8 h-8 rounded-lg bg-brand-green/20 text-brand-lightgreen font-bold text-sm flex items-center justify-center shrink-0">6</span>
+                    <span class="font-semibold text-slate-200 text-sm">Educación Física</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 hover:border-brand-lightgreen/40 transition-all">
+                    <span class="w-8 h-8 rounded-lg bg-brand-green/20 text-brand-lightgreen font-bold text-sm flex items-center justify-center shrink-0">7</span>
+                    <span class="font-semibold text-slate-200 text-sm">Fundamentos de Psicología</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 hover:border-brand-lightgreen/40 transition-all">
+                    <span class="w-8 h-8 rounded-lg bg-brand-green/20 text-brand-lightgreen font-bold text-sm flex items-center justify-center shrink-0">8</span>
+                    <span class="font-semibold text-slate-200 text-sm">Física Elemental</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 hover:border-brand-lightgreen/40 transition-all">
+                    <span class="w-8 h-8 rounded-lg bg-brand-green/20 text-brand-lightgreen font-bold text-sm flex items-center justify-center shrink-0">9</span>
+                    <span class="font-semibold text-slate-200 text-sm">Química</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 hover:border-brand-lightgreen/40 transition-all sm:col-span-2 lg:col-span-1">
+                    <span class="w-8 h-8 rounded-lg bg-brand-green/20 text-brand-lightgreen font-bold text-sm flex items-center justify-center shrink-0">10</span>
+                    <span class="font-semibold text-slate-200 text-sm">Biología</span>
+                </div>
+            </div>
+
+            <!-- 2do Año -->
+            <div id="2do-ano" class="year-content hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 hover:border-brand-blue/40 transition-all">
+                    <span class="w-8 h-8 rounded-lg bg-brand-blue/20 text-brand-blue font-bold text-sm flex items-center justify-center shrink-0">1</span>
+                    <span class="font-semibold text-slate-200 text-sm">Español II</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 hover:border-brand-blue/40 transition-all">
+                    <span class="w-8 h-8 rounded-lg bg-brand-blue/20 text-brand-blue font-bold text-sm flex items-center justify-center shrink-0">2</span>
+                    <span class="font-semibold text-slate-200 text-sm">Matemática Aplicada</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 hover:border-brand-blue/40 transition-all">
+                    <span class="w-8 h-8 rounded-lg bg-brand-blue/20 text-brand-blue font-bold text-sm flex items-center justify-center shrink-0">3</span>
+                    <span class="font-semibold text-slate-200 text-sm">Apreciación Artística</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 hover:border-brand-blue/40 transition-all">
+                    <span class="w-8 h-8 rounded-lg bg-brand-blue/20 text-brand-blue font-bold text-sm flex items-center justify-center shrink-0">4</span>
+                    <span class="font-semibold text-slate-200 text-sm">Inglés Técnico</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 hover:border-brand-blue/40 transition-all">
+                    <span class="w-8 h-8 rounded-lg bg-brand-blue/20 text-brand-blue font-bold text-sm flex items-center justify-center shrink-0">5</span>
+                    <span class="font-semibold text-slate-200 text-sm">Legislación</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 hover:border-brand-blue/40 transition-all">
+                    <span class="w-8 h-8 rounded-lg bg-brand-blue/20 text-brand-blue font-bold text-sm flex items-center justify-center shrink-0">6</span>
+                    <span class="font-semibold text-slate-200 text-sm">Programación I</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 hover:border-brand-blue/40 transition-all">
+                    <span class="w-8 h-8 rounded-lg bg-brand-blue/20 text-brand-blue font-bold text-sm flex items-center justify-center shrink-0">7</span>
+                    <span class="font-semibold text-slate-200 text-sm">Informática</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 hover:border-brand-blue/40 transition-all">
+                    <span class="w-8 h-8 rounded-lg bg-brand-blue/20 text-brand-blue font-bold text-sm flex items-center justify-center shrink-0">8</span>
+                    <span class="font-semibold text-slate-200 text-sm">Ofimática</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 hover:border-brand-blue/40 transition-all">
+                    <span class="w-8 h-8 rounded-lg bg-brand-blue/20 text-brand-blue font-bold text-sm flex items-center justify-center shrink-0">9</span>
+                    <span class="font-semibold text-slate-200 text-sm">Física Elemental</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 hover:border-brand-blue/40 transition-all">
+                    <span class="w-8 h-8 rounded-lg bg-brand-blue/20 text-brand-blue font-bold text-sm flex items-center justify-center shrink-0">10</span>
+                    <span class="font-semibold text-slate-200 text-sm">Análisis Web</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 hover:border-brand-blue/40 transition-all">
+                    <span class="w-8 h-8 rounded-lg bg-brand-blue/20 text-brand-blue font-bold text-sm flex items-center justify-center shrink-0">11</span>
+                    <span class="font-semibold text-slate-200 text-sm">Filosofía</span>
+                </div>
+            </div>
+
+            <!-- 3er Año -->
+            <div id="3er-ano" class="year-content hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 hover:border-brand-yellow/40 transition-all">
+                    <span class="w-8 h-8 rounded-lg bg-brand-yellow/20 text-brand-yellow font-bold text-sm flex items-center justify-center shrink-0">1</span>
+                    <span class="font-semibold text-slate-200 text-sm">Programación II</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 hover:border-brand-yellow/40 transition-all">
+                    <span class="w-8 h-8 rounded-lg bg-brand-yellow/20 text-brand-yellow font-bold text-sm flex items-center justify-center shrink-0">2</span>
+                    <span class="font-semibold text-slate-200 text-sm">Desarrollo Web</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 hover:border-brand-yellow/40 transition-all">
+                    <span class="w-8 h-8 rounded-lg bg-brand-yellow/20 text-brand-yellow font-bold text-sm flex items-center justify-center shrink-0">3</span>
+                    <span class="font-semibold text-slate-200 text-sm">Gestión Empresarial Orientada a la Informática</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 hover:border-brand-yellow/40 transition-all">
+                    <span class="w-8 h-8 rounded-lg bg-brand-yellow/20 text-brand-yellow font-bold text-sm flex items-center justify-center shrink-0">4</span>
+                    <span class="font-semibold text-slate-200 text-sm">Producciones Digitales</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 hover:border-brand-yellow/40 transition-all">
+                    <span class="w-8 h-8 rounded-lg bg-brand-yellow/20 text-brand-yellow font-bold text-sm flex items-center justify-center shrink-0">5</span>
+                    <span class="font-semibold text-slate-200 text-sm">Redes Informáticas</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 hover:border-brand-yellow/40 transition-all">
+                    <span class="w-8 h-8 rounded-lg bg-brand-yellow/20 text-brand-yellow font-bold text-sm flex items-center justify-center shrink-0">6</span>
+                    <span class="font-semibold text-slate-200 text-sm">Mantenimiento y Reparación de Computadoras</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- REGISTRO SQL -->
+        <section id="registro" class="glass-card sql-section">
+            <h2 class="section-title">Sistema de Registro de Estudiantes (SQL Simulada)</h2>
+            
+            <form id="studentForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="studentName">Nombre Completo:</label>
+                        <input type="text" id="studentName" required placeholder="Ej. Juan Pérez">
+                    </div>
+                    <div class="form-group">
+                        <label for="studentId">Identidad / Cédula:</label>
+                        <input type="text" id="studentId" required placeholder="Ej. 0501-2005-12345">
+                    </div>
+                    <div class="form-group">
+                        <label for="studentCourse">Año / Curso:</label>
+                        <select id="studentCourse" required>
+                            <option value="1er Año">1er Año</option>
+                            <option value="2do Año">2do Año</option>
+                            <option value="3er Año">3er Año</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentPhone">Teléfono:</label>
+                        <input type="tel" id="studentPhone" required placeholder="Ej. 9999-8888">
+                    </div>
+                    <button type="submit" class="btn-submit">
+                        <i class="fa-solid fa-plus"></i> Registrar (INSERT)
+                    </button>
+                </div>
+            </form>
+
+            <div class="sql-terminal" id="sqlOutput">
+                -- Terminal de Consulta SQL Simulada<br>
+                SELECT * FROM estudiantes_informatica;
+            </div>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre Completo</th>
+                            <th>Identidad</th>
+                            <th>Curso / Año</th>
+                            <th>Teléfono</th>
+                            <th style="text-align: center;">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentTableBody">
+                        <!-- Carga dinámica -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Área de Informática BTPI - Todos los derechos reservados</p>
+    </footer>
+
+    <!-- SCRIPT DE NAVEGACIÓN Y ALMACENAMIENTO LOCAL -->
+    <script>
+        // Función para cambiar de pestaña entre 1er, 2do y 3er Año
+        function switchYear(yearId) {
+            document.querySelectorAll('.year-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(yearId).classList.remove('hidden');
+
+            document.querySelectorAll('.year-btn').forEach(btn => {
+                btn.className = 'year-btn bg-slate-800 text-slate-400 border border-slate-700 font-semibold px-4 py-2 rounded-lg text-sm transition-all';
+            });
+
+            const activeBtn = document.getElementById(`btn-${yearId}`);
+            if (yearId === '1er-ano') {
+                activeBtn.className = 'year-btn active bg-brand-green/20 text-brand-lightgreen border border-brand-lightgreen/50 font-semibold px-4 py-2 rounded-lg text-sm transition-all';
+            } else if (yearId === '2do-ano') {
+                activeBtn.className = 'year-btn active bg-brand-blue/20 text-brand-blue border border-brand-blue/50 font-semibold px-4 py-2 rounded-lg text-sm transition-all';
+            } else if (yearId === '3er-ano') {
+                activeBtn.className = 'year-btn active bg-brand-yellow/20 text-brand-yellow border border-brand-yellow/50 font-semibold px-4 py-2 rounded-lg text-sm transition-all';
+            }
+        }
+
+        // Lógica de Registro de Estudiantes (SQL Simulada y LocalStorage)
+        document.addEventListener('DOMContentLoaded', () => {
+            const studentForm = document.getElementById('studentForm');
+            const studentTableBody = document.getElementById('studentTableBody');
+            const sqlOutput = document.getElementById('sqlOutput');
+
+            let students = JSON.parse(localStorage.getItem('btpi_students')) || [
+                { name: "Joseph Palencia", identity: "0501-2005-00456", course: "2do Año", phone: "9765-4321" },
+                { name: "Rodin Jair Padilla", identity: "0501-2006-00789", course: "2do Año", phone: "9654-3210" }
+            ];
+
+            function renderStudents() {
+                studentTableBody.innerHTML = '';
+
+                if (students.length === 0) {
+                    studentTableBody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:#64748b; padding:1.5rem;">No hay estudiantes registrados.</td></tr>`;
+                    sqlOutput.innerHTML = `-- Base de datos vacía.<br>SELECT * FROM estudiantes_informatica;`;
+                    return;
+                }
+
+                students.forEach((student, index) => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${index + 1}</td>
+                        <td style="color:white; font-weight:500;">${student.name}</td>
+                        <td>${student.identity}</td>
+                        <td><span class="badge">${student.course}</span></td>
+                        <td>${student.phone}</td>
+                        <td style="text-align:center;">
+                            <button class="btn-delete" onclick="deleteStudent(${index})">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </td>
+                    `;
+                    studentTableBody.appendChild(tr);
+                });
+
+                const lastStudent = students[students.length - 1];
+                sqlOutput.innerHTML = `SELECT * FROM estudiantes_informatica;<br>` +
+                    `-- Última inserción realizada:<br>` +
+                    `<span style="color:#34d399;">INSERT INTO estudiantes_informatica (nombre, identidad, curso, telefono)<br>` +
+                    `VALUES ('${lastStudent.name}', '${lastStudent.identity}', '${lastStudent.course}', '${lastStudent.phone}');</span>`;
+            }
+
+            studentForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const newStudent = {
+                    name: document.getElementById('studentName').value,
+                    identity: document.getElementById('studentId').value,
+                    course: document.getElementById('studentCourse').value,
+                    phone: document.getElementById('studentPhone').value
+                };
+
+                students.push(newStudent);
+                localStorage.setItem('btpi_students', JSON.stringify(students));
+
+                studentForm.reset();
+                renderStudents();
+            });
+
+            window.deleteStudent = function(index) {
+                const deletedName = students[index].name;
+                students.splice(index, 1);
+                localStorage.setItem('btpi_students', JSON.stringify(students));
+                renderStudents();
+
+                sqlOutput.innerHTML = `<span style="color:#f87171;">DELETE FROM estudiantes_informatica WHERE nombre = '${deletedName}';</span><br>` +
+                    `SELECT * FROM estudiantes_informatica;`;
+            };
+
+            renderStudents();
+        });
+    </script>
+</body>
+</html>
